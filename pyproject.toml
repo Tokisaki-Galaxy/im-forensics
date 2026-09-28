@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "im-forensics"
+version = "0.1.0"
+description = "Instant Messaging Forensics and Analysis Toolkit (WeChat & QQ NT)"
+readme = "README.md"
+authors = [{ name = "tokisaki" }]
+license = { text = "MIT" }
+requires-python = ">=3.9"
+dependencies = [
+    "zstandard>=0.22.0",
+    "openpyxl>=3.1.0",
+    "cryptography>=41.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black",
+    "flake8",
+]
+frida = [
+    "frida>=16.0.0",
+]
+
+[project.scripts]
+wechat-cli = "im_forensics.wechat.cli:main"
+qqnt-cli = "im_forensics.qqnt.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
